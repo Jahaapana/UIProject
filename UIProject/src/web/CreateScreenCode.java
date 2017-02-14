@@ -79,7 +79,7 @@ public class CreateScreenCode {
 	}
 
 	public String getCode_Name(){
-		return this.screenCode+"."+this.screenName;
+		return this.screenCode+".."+this.screenName;
 	}
 	public String getScreenCode() {
 		return screenCode;

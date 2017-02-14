@@ -71,6 +71,16 @@ function resetDisabled(){
     max-height: 150px;
     overflow-y: scroll;
 }
+table#result-table th {  
+    color: white;  
+    background-color: gray;  
+}
+table#result-table tr:nth-child(even) {  
+    background-color: #eee;  
+}  
+table#result-table tr:nth-child(odd) {  
+    background-color: #fff;  
+}    
 </style>
 </head>
 <body onload="testButtonStatus()">
@@ -103,10 +113,10 @@ function resetDisabled(){
 		</table>
 		</div>
 		<div class="ScrollRequired">
-			<table align="center" width="450" height="100">
+			<table id="result-table" align="center" width="450" height="100">
 				<tr>
 					<c:forEach items="${headerinfo}" var="headervalue">
-						<td><c:out value="${headervalue}" /></td>
+						<th><c:out value="${headervalue}" /></th>
 					</c:forEach>
 				</tr>
 				<c:forEach items="${lists}" var="cText" varStatus="status">

@@ -2,8 +2,11 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import services.Function_T_Services.ScreenType;
 import constants.Constants;
 import web.CreateScreenCode;
 import web.CreateText;
@@ -70,15 +73,50 @@ public CreateScreenCode addToObject(List<CreateScreenCode> list) {
 	
 	return ctr;
 }
-public List<String> getScreenTypeList() {
+public List<ScreenType> getScreenTypeList() {
 	
-	List<String> list=new ArrayList<String>();
+		List<ScreenType> list = new ArrayList<ScreenType>();
+
+		ScreenType sType1 = new ScreenType();
+
+		sType1.setLabel(Constants.SCREEN_TYPE_BACKEND);
+		sType1.setValue("B");
+
+		ScreenType sType2 = new ScreenType();
+
+		sType2.setLabel(Constants.SCREEN_TYPE_FRONTEND);
+		sType2.setValue("F");
+
+		ScreenType sType3 = new ScreenType();
+
+		sType3.setLabel(Constants.SCREEN_TYPE_POPUP);
+		sType3.setValue("P");
+
+		list.add(sType1);
+		list.add(sType2);
+		list.add(sType3);
+
+		return list;
 	
-	list.add(Constants.SCREEN_TYPE_BACKEND);
-	list.add(Constants.SCREEN_TYPE_FRONTEND);
-	list.add(Constants.SCREEN_TYPE_POPUP);
+}
+
+public class ScreenType{
 	
-	return list;
+	private String value;
+	private String label;
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	
 	
 }
 

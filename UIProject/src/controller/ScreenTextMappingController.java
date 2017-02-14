@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.Function_T_Services;
 import services.Text_Mapping_Services;
+import services.Text_Mapping_Services.TextTypeOptions;
 import services.Text_T_Services;
 import constants.CreateHeaderInfo;
 import dao.Function_T_Intract;
@@ -35,7 +36,7 @@ public class ScreenTextMappingController {
 		//Map<Integer, String> screenCodeMap = tServices.getScreenCodesNames(intract);
 		List<CreateScreenCode> screenCodeList = tServices.getScreenCodesNames(intract1);
 		List<CreateText> textCodeList = tServices.getTextCode(intract2);
-		List<String> textType=tServices.getTextType();
+		List<TextTypeOptions> textType=tServices.getTextType();
 		model.addAttribute("screenCodeOptions", screenCodeList);
 		model.addAttribute("textCodeOptions", textCodeList);
 		model.addAttribute("textTypeOptions", textType);
@@ -56,12 +57,16 @@ public class ScreenTextMappingController {
 				//Function_T_Services tServices=new Function_T_Services();
 				Text_Mapping_Intract intract=Text_Mapping_Intract.getModel();
 				Text_Mapping_Services tServices=new Text_Mapping_Services();
+				ScreenTextMapping mScreenTextMapping = screenTextMapping;
 				
 				
 				CreateHeaderInfo header=new CreateHeaderInfo();
 		        
 				//ScreenTextMapping cCode=tServices.addCreatedInfo(createScreenCode);
-		        intract.saveOrUpdateScreen(screenTextMapping);
+				mScreenTextMapping = tServices.modifyScreenCode(screenTextMapping);
+				mScreenTextMapping = tServices.addCreatedInfo(mScreenTextMapping);
+				
+		        intract.saveOrUpdateScreen(mScreenTextMapping);
 		        List<ScreenTextMapping> list=intract.loadScreenTextRecords();
 		        ModelAndView mnv = new ModelAndView("ScreenTextMapping", "command", new ScreenTextMapping());
 		        

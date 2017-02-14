@@ -45,14 +45,82 @@ public List<CreateText> getTextCode(Text_T_Intract intract){
 	List<CreateText> list=intract.loadTextTRecords();
 		return list;
 }
-public List<String> getTextType(){
+public List<TextTypeOptions> getTextType(){
 	
-	List<String> list=new ArrayList<String>();
-	list.add(Constants.TEXT_TYPE_FIELD);
-	list.add(Constants.TEXT_TYPE_HEADER);
-	list.add(Constants.TEXT_TYPE_BUTTON);
-	list.add(Constants.TEXT_TYPE_PAGE);
+	List<TextTypeOptions> list=new ArrayList<TextTypeOptions>();
+	
+	TextTypeOptions tTypeOpt1=new TextTypeOptions();
+	tTypeOpt1.setName(Constants.TEXT_TYPE_FIELD);
+	tTypeOpt1.setValue("FL");
+	list.add(tTypeOpt1);
+	TextTypeOptions tTypeOpt2=new TextTypeOptions();
+	tTypeOpt2.setName(Constants.TEXT_TYPE_HEADER);
+	tTypeOpt2.setValue("HL");
+	list.add(tTypeOpt2);
+	TextTypeOptions tTypeOpt3=new TextTypeOptions();
+	tTypeOpt3.setName(Constants.TEXT_TYPE_BUTTON);
+	tTypeOpt3.setValue("BL");
+	list.add(tTypeOpt3);
+	TextTypeOptions tTypeOpt4=new TextTypeOptions();
+	tTypeOpt4.setName(Constants.TEXT_TYPE_PAGE);
+	tTypeOpt4.setValue("PL");
+	list.add(tTypeOpt4);
+	
 	return list;
 	
 }
+public class TextTypeOptions{
+	
+	public String name;
+	public String value;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	
+}
+public ScreenTextMapping modifyScreenCode(ScreenTextMapping mScreenTextMapping) {
+	
+	String screenCodeName = mScreenTextMapping.getScreenCode();
+	String code = screenCodeName;
+	if(screenCodeName.indexOf("..") !=-1){
+	 code = screenCodeName.substring(0, screenCodeName.indexOf(".."));
+	}
+	
+	mScreenTextMapping.setScreenCode(code);
+	
+	return mScreenTextMapping;
+}
+public ScreenTextMapping addCreatedInfo( ScreenTextMapping obj){
+	
+	ScreenTextMapping cText= (ScreenTextMapping)obj;
+	Date cd = cText.getCreatedDate(), ud = cText.getUpdatedDate();
+
+	if(null != cText.getCreatedDate()){
+		cd =cText.getCreatedDate();
+	}
+	else{
+		cd = new Date();
+	}
+	ud = new Date();
+	
+	cText.setCreatedDate(cd);
+	cText.setUpdatedDate(ud);
+
+	// take login info and add it to createdBy and updatedBy columns
+	cText.setCreatedBy("jahangir");
+	cText.setUpdatedBy("jahaa");
+
+	return cText;
+	
+}
+
 }

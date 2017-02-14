@@ -91,16 +91,6 @@ $(document).ready(function() {
 			$('.type2').prop("disabled", true);
 		}
 		
-		// To add class in to result table
-		 var table = document.getElementById("result-table");   
-		 var rows = table.getElementsByTagName("tr");   
-		    for(i = 0; i < rows.length; i++){           
-		      if(i % 2 == 0){ 
-		        rows[i].className = "even"; 
-		      }else{ 
-		        rows[i].className = "odd"; 
-		      }       
-		    } 
 	}
 
 	function resetDisabled() {
@@ -114,7 +104,7 @@ $(document).ready(function() {
 	function showScreenName(variable){
 		//alert(variable);
 		//document.getElementById('TSName').value = variable;
-		document.getElementById("TSName").value=variable.substring(variable.indexOf(".", 0)+1);
+		document.getElementById("TSName").value=variable.substring(variable.indexOf("..", 0)+1);
 	}
 </script>
 <style>
@@ -135,18 +125,20 @@ width:150px;
 #TType{
 width:150px;
 }
-/* table.result-table{
-	tr:nth-child(even) {
-	    background: #ccccff;
-	} */
-/* background-color: #ccccff; */
-/*}*/
-/* li:nth-child(even) {
-    background: blue;
-} */
+table#result-table th {  
+    color: white;  
+    background-color: gray;  
+}
+table#result-table tr:nth-child(even) {  
+    background-color: #eee;  
+}  
+table#result-table tr:nth-child(odd) {  
+    background-color: #fff;  
+}    
 </style>
 </head>
 <body onload="testButtonStatus()">
+<p align="right"><a href="/">Back</a></p> 
 <form:form method="POST" action="fromScreenTextMapping" id="myForm" >
 <div>
 <table align="center" width="350" height="100">
@@ -172,7 +164,7 @@ width:150px;
 				<%-- <form:input id="TCode" path="textCode" /> --%>
 				<form:select id="TCode" path="textCode" >
 					<form:option value="" label="-- Select Any --" />
-					<form:options items="${textCodeOptions}" itemLabel="label" itemValue="label" />
+					<form:options items="${textCodeOptions}" itemLabel="label" itemValue="id" />
 				</form:select>
 				</td>
 				
@@ -180,17 +172,17 @@ width:150px;
 				<%-- <form:input id="TType" path="textType" /> --%>
 				<form:select id="TType" path="textType" >
 					<form:option value="" label="-- Select Any --" />
-					<form:options items="${textTypeOptions}" />
+					<form:options items="${textTypeOptions}" itemLabel="name" itemValue="value" />
 				</form:select>
 				</td>
 			</tr>
-			<tr>	
+			<%-- <tr>	
 				<form:hidden path="id" />
-				<%-- <form:hidden path="createdDate" />
+				<form:hidden path="createdDate" />
 				<form:hidden path="createdBy" />
 				<form:hidden path="updatedDate" />
-				<form:hidden path="updatedBy" /> --%>
-			</tr>
+				<form:hidden path="updatedBy" />
+			</tr> --%>
 			<tr></tr><tr></tr><tr></tr>
 			<tr>
 				<td colspan="2">

@@ -1,5 +1,6 @@
 package web;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,8 +12,10 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="LABLE_T", schema="jahaa")
-public class ScreenTextMapping {
+public class ScreenTextMapping implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="L_FUNC_CODE")
 	private String screenCode;

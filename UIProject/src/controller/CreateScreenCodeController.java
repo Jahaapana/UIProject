@@ -1,8 +1,10 @@
 package controller;
 
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
+
 
 
 
@@ -22,18 +24,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.Function_T_Services;
+import services.Function_T_Services.ScreenType;
 import constants.CreateHeaderInfo;
 import dao.Function_T_Intract;
 import web.CreateScreenCode;
-import web.CreateText;
 
 @Controller 
 public class CreateScreenCodeController {
 	
 	@ModelAttribute("screenTypeList")
-    public List<String> populateScreenTypes(){
+    public List<ScreenType> populateScreenTypes(){
 		Function_T_Services tServices=new Function_T_Services();
-		List<String> screenTypeList = tServices.getScreenTypeList();
+		List<ScreenType> screenTypeList = tServices.getScreenTypeList();
         return screenTypeList;
     }
 
