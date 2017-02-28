@@ -106,11 +106,16 @@ table#result-table tr:nth-child(odd) {
 </style>
 </head>
 <body onload="testButtonStatus()">
+
 <form:form method="POST" action="fromCreateScreenCode" id="myForm" >
 <div>
 <table align="center" width="350" height="100">
-		
-			<tr>
+				<tr>
+					<td align="center" colspan="2"><b><u>Create Screen Code</u></b></td>
+					<td><a href="/UIProject">Back</a></td>
+				</tr>
+				<tr></tr><tr></tr><tr></tr>
+				<tr>
 				<td><form:label path="screenCode">Screen Code</form:label>
 				<form:input id="TSCode" path="screenCode" /></td>
 
@@ -151,7 +156,7 @@ table#result-table tr:nth-child(odd) {
 				<input type="submit" id="b4" value="Delete"   disabled="disabled"	class="type1" name="Delete"/>&nbsp; &nbsp;  &nbsp;
 				</td>
 			</tr>
-			<tr><td colspan="2">${msg}</td></tr>
+			<tr><td colspan="2" style="color:red">${msg}</td></tr>
 			<tr></tr>
 </table>
 <!-- deleting the row on click of button -->

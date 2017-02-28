@@ -104,7 +104,7 @@ $(document).ready(function() {
 	function showScreenName(variable){
 		//alert(variable);
 		//document.getElementById('TSName').value = variable;
-		document.getElementById("TSName").value=variable.substring(variable.indexOf("..", 0)+1);
+		document.getElementById("TSName").value=variable.substring(variable.indexOf("..", 0)+2);
 	}
 </script>
 <style>
@@ -138,11 +138,14 @@ table#result-table tr:nth-child(odd) {
 </style>
 </head>
 <body onload="testButtonStatus()">
-<p align="right"><a href="/">Back</a></p> 
 <form:form method="POST" action="fromScreenTextMapping" id="myForm" >
 <div>
 <table align="center" width="350" height="100">
-		
+			<tr>
+					<td align="center" colspan="2"><b><u>Screen Text Mapping</u></b></td>
+					<td><a href="/UIProject">Back</a></td>
+				</tr>
+				<tr></tr><tr></tr><tr></tr>
 			<tr>
 				<td><form:label path="screenCode">Screen Code</form:label>
 				<form:select id="TSCode" path="screenCode" onchange="showScreenName(this.value);">
@@ -192,7 +195,7 @@ table#result-table tr:nth-child(odd) {
 				<input type="submit" id="b4" value="Delete"   disabled="disabled"	class="type1" name="Delete"/>&nbsp; &nbsp;  &nbsp;
 				</td>
 			</tr>
-			<tr><td colspan="2">${msg}</td></tr>
+			<tr><td colspan="2" style="color:red">${msg}</td></tr>
 			<tr></tr>
 </table>
 </div>

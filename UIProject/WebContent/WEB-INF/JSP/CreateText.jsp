@@ -88,6 +88,11 @@ table#result-table tr:nth-child(odd) {
 	<div >
 		<table align="center" width="350" height="100">
 			<tr>
+					<td align="center" colspan="2"><b><u>Create Text</u></b></td>
+					<td><a href="/UIProject">Back</a></td>
+				</tr>
+				<tr></tr><tr></tr><tr></tr>
+			<tr>
 				<td><form:label path="label">Label</form:label></td>
 				<td><form:input id="Tlabel" path="label" /></td>
 
@@ -108,7 +113,7 @@ table#result-table tr:nth-child(odd) {
 				<input type="submit" id="b3" value="Save"   disabled="disabled"	class="inputDisabled" name="Save"/>
 				</td>
 			</tr>
-			<tr><td colspan="2">${msg}</td></tr>
+			<tr><td colspan="2" style="color:red">${msg}</td></tr>
 			<tr></tr>
 		</table>
 		</div>

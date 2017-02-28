@@ -32,7 +32,17 @@ public class Function_T_Intract {
 		model.sf = model.cfg.buildSessionFactory();
 		return model;
 	}
-	
+	public String getScreenName(String code){
+		
+		s = sf.openSession();
+		String hql = "from CreateScreenCode C where screenCode='"+code+"'";
+		
+		Query q=s.createQuery(hql);
+		
+		List<CreateScreenCode> records=q.list();
+		
+		return records.get(0).getScreenName();
+	}
 	//To save Text_T object
 	public void saveOrUpdateCode(CreateScreenCode o ){
 		

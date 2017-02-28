@@ -19,7 +19,8 @@ public class Text_Mapping_Services {
 		
 		//int id=list.get(0).getId();
 		String screenCode=list.get(0).getScreenCode();
-		String screenName=list.get(0).getScreenName();
+		Function_T_Intract intract1=Function_T_Intract.getModel();
+		String screenName=intract1.getScreenName(screenCode);
 		String screenTextCode = list.get(0).getScreenTextCode();
 		String textCode=list.get(0).getTextCode();
 		String textType=list.get(0).getTextType();
@@ -27,7 +28,7 @@ public class Text_Mapping_Services {
 		ScreenTextMapping ctr = new ScreenTextMapping();
 		
 		//ctr .setId(id);
-		ctr .setScreenCode(screenCode);
+		ctr .setScreenCode(screenCode+".."+screenName);
 		ctr.setScreenName(screenName);
 		ctr.setScreenTextCode(screenTextCode);
 		ctr.setTextCode(textCode);
@@ -122,5 +123,22 @@ public ScreenTextMapping addCreatedInfo( ScreenTextMapping obj){
 	return cText;
 	
 }
-
+public String getOnlyCode(String screenCode) {
+	
+	return screenCode.substring(0, screenCode.indexOf(".."));
+}
+public List<ScreenTextMapping> addScreenNames(
+			List<ScreenTextMapping> loadScreenTextRecords) {
+		List<ScreenTextMapping> list = new ArrayList<ScreenTextMapping>();
+		Function_T_Intract intract1 = Function_T_Intract.getModel();
+		ScreenTextMapping screenTextMapping = new ScreenTextMapping();
+		for (int i = 0; i < loadScreenTextRecords.size(); i++) {
+			screenTextMapping = loadScreenTextRecords.get(i);
+			String screenName = intract1.getScreenName(screenTextMapping
+					.getScreenCode());
+			screenTextMapping.setScreenName(screenName);
+			list.add(screenTextMapping);
+		}
+		return list;
+	}
 }

@@ -53,6 +53,10 @@ public class CreateScreenCode {
 	@Transient
 	private String Code_Name;
 	
+	public void setCode_Name(String code_Name) {
+		Code_Name = code_Name;
+	}
+
 	public CreateScreenCode() {
 	}
 	

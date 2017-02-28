@@ -67,7 +67,7 @@ public class ScreenTextMappingController {
 				mScreenTextMapping = tServices.addCreatedInfo(mScreenTextMapping);
 				
 		        intract.saveOrUpdateScreen(mScreenTextMapping);
-		        List<ScreenTextMapping> list=intract.loadScreenTextRecords();
+		        List<ScreenTextMapping> list=tServices.addScreenNames(intract.loadScreenTextRecords());
 		        ModelAndView mnv = new ModelAndView("ScreenTextMapping", "command", new ScreenTextMapping());
 		        
 		        mnv.addObject("headerinfo",header.getTextMappingHeaderInfo());
@@ -92,8 +92,8 @@ public class ScreenTextMappingController {
 				//Text_T_Intract intract=Text_T_Intract.getModel();
 				/*Function_T_Intract intract=Function_T_Intract.getModel();*/
 				
-				
-				List<ScreenTextMapping> list=intract.searchScreenTextRecords(screenTextMapping.getScreenCode());
+				String code = tServices.getOnlyCode(screenTextMapping.getScreenCode());
+				List<ScreenTextMapping> list=intract.searchScreenTextRecords(code);
 				
 				if(list.size()>0 && list.size() == 1){
 					ctr = tServices.addToObject(list);
@@ -103,7 +103,8 @@ public class ScreenTextMappingController {
 					msg="your search returns no result";
 				}
 				
-				List<ScreenTextMapping> list2=intract.loadScreenTextRecords();
+				List<ScreenTextMapping> list2=tServices.addScreenNames(intract.loadScreenTextRecords());
+				
 				
 				ModelAndView mnv = new ModelAndView("ScreenTextMapping", "command", ctr);
 				
@@ -136,7 +137,7 @@ public class ScreenTextMappingController {
 					msg="No Record to delete";
 				}
 				ctr = new ScreenTextMapping();
-				List<ScreenTextMapping> list2=intract.loadScreenTextRecords();
+				List<ScreenTextMapping> list2=tServices.addScreenNames(intract.loadScreenTextRecords());
 				
 				ModelAndView mnv = new ModelAndView("ScreenTextMapping", "command", ctr);
 				
@@ -164,7 +165,7 @@ public class ScreenTextMappingController {
 				
 				ScreenTextMapping ctr=tServices.addToObject(list1);
 				
-				List<ScreenTextMapping> list2=intract.loadScreenTextRecords();
+				List<ScreenTextMapping> list2=tServices.addScreenNames(intract.loadScreenTextRecords());
 				
 				//CreateHeaderInfo header=new CreateHeaderInfo();
 				
@@ -199,7 +200,7 @@ public class ScreenTextMappingController {
 					msg="your search returns no result";
 				}
 				
-				List<ScreenTextMapping> list2=intract.loadScreenTextRecords();
+				List<ScreenTextMapping> list2=tServices.addScreenNames(intract.loadScreenTextRecords());
 				
 				model.addAttribute("msg", msg);
 				ModelAndView mnv = new ModelAndView("ScreenTextMapping", "command", ctr);
@@ -225,7 +226,7 @@ public class ScreenTextMappingController {
 		        
 		        intract.saveOrUpdateScreen(screenTextMapping);
 		       
-		        List<ScreenTextMapping> list=intract.loadScreenTextRecords();
+		        List<ScreenTextMapping> list=tServices.addScreenNames(intract.loadScreenTextRecords());
 		       
 		        
 		        ModelAndView mnv = new ModelAndView("ScreenTextMapping", "command", new ScreenTextMapping());
@@ -261,7 +262,7 @@ public class ScreenTextMappingController {
 					msg="No Record to delete";
 				}
 				ctr = new ScreenTextMapping();
-				List<ScreenTextMapping> list2=intract.loadScreenTextRecords();
+				List<ScreenTextMapping> list2=tServices.addScreenNames(intract.loadScreenTextRecords());
 				
 				model.addAttribute("msg", msg);
 				ModelAndView mnv = new ModelAndView("ScreenTextMapping", "command", ctr);
