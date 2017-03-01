@@ -5,9 +5,10 @@ import java.util.Date;
 import javax.persistence.*;
 
 import constants.Constants;
+import constants.DBConstants;
 
 @Entity
-@Table(name="ALL_TEXT_T", schema="jahaa")
+@Table(name=DBConstants.TABLE_NAME_TEXT, schema=DBConstants.SCHEMA_NAME)
 public class CreateText {
 	
 	@Id

@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import constants.DBConstants;
+
 @Entity
-@Table(name="LABLE_T", schema="jahaa")
+@Table(name=DBConstants.TABLE_NAME_LABLE, schema=DBConstants.SCHEMA_NAME)
 public class ScreenTextMapping implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

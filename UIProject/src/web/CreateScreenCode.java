@@ -4,8 +4,10 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import constants.DBConstants;
+
 @Entity
-@Table(name="FUNCTION_T", schema="jahaa")
+@Table(name=DBConstants.TABLE_NAME_FUNCTION, schema = DBConstants.SCHEMA_NAME)
 public class CreateScreenCode {
 	
 	/*@Column(name="FUN_CODE", unique=true)*/
